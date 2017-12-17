@@ -10,3 +10,24 @@ buildNumber.properties
 
 # Avoid ignoring Maven wrapper jar file (.jar files are usually ignored)
 !/.mvn/wrapper/maven-wrapper.jar
+
+#Eclipse.classpath.proect.settins/#Intelli.i
+e
+
+# Eclipse
+.classpath
+.project
+.settings/
+bin/
+
+# Intellij
+.idea/
+*.iml
+*.iws
+
+# Mac
+.DS_Store
+
+# Maven
+log/
+target/
