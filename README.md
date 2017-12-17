@@ -19,5 +19,5 @@ brew services start rabbitmq
 3. Clone this Repository and Have fun!
 
 ```
-git clone https://github.com/damiannolan/rabbit-mq-demo.git
+git clone https://github.com/damiannolan/rabbitmq-producer-consumer.git
 ```
