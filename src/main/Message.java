@@ -28,4 +28,9 @@ public class Message implements Serializable {
 	public void setId(long id) {
 		this.id = id;
 	}
+	
+	@Override
+	public String toString() {
+		return "Message ID: " + id + " Content: " + content;
+	}
 }

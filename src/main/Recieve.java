@@ -2,6 +2,8 @@ package main;
 
 import java.io.IOException;
 
+import org.apache.commons.lang.SerializationUtils;
+
 import com.rabbitmq.client.*;
 
 public class Recieve {
@@ -20,7 +22,9 @@ public class Recieve {
 			@Override
 			public void handleDelivery(String consumerTag, Envelope env, AMQP.BasicProperties props, byte[] body)
 				throws IOException {
-				String message = new String(body, "UTF-8");
+				//String message = new String(body, "UTF-8");
+				
+				Message message = (Message)SerializationUtils.deserialize(body);
 				System.out.println(" [x] Recieved: " + message);
 			}
 		};

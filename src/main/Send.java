@@ -2,6 +2,8 @@ package main;
 
 import java.io.IOException;
 
+import org.apache.commons.lang.SerializationUtils;
+
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
@@ -17,11 +19,12 @@ public class Send {
 		Channel channel = connection.createChannel();
 		
 		channel.queueDeclare(QUEUE_NAME, false, false, false, null);
-		String message = "Hello RabbitMQ";
 		
-		//Message message = new Message(0, content);
+		//String message = "Hello RabbitMQ";
 		
-		channel.basicPublish("", QUEUE_NAME, null, message.getBytes());
+		Message message = new Message(0, "Hello RabbitMQ!");
+		
+		channel.basicPublish("", QUEUE_NAME, null, SerializationUtils.serialize(message));
 		System.out.println(" [x] Sent : " + message);
 		
 		channel.close();
