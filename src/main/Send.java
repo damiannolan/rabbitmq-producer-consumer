@@ -11,7 +11,7 @@ import com.rabbitmq.client.ConnectionFactory;
 public class Send {
 	private final static String QUEUE_NAME = "TEST";
 	
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException, InterruptedException {
 		// Get a connection channel from the factory
 		ConnectionFactory factory = new ConnectionFactory();
 		factory.setHost("localhost");
@@ -21,11 +21,14 @@ public class Send {
 		channel.queueDeclare(QUEUE_NAME, false, false, false, null);
 		
 		//String message = "Hello RabbitMQ";
-		
-		Message message = new Message(0, "Hello RabbitMQ!");
-		
-		channel.basicPublish("", QUEUE_NAME, null, SerializationUtils.serialize(message));
-		System.out.println(" [x] Sent : " + message);
+		Message message;
+		for (int i = 0; i < 10; i ++) {
+			Thread.sleep(500);
+			message = new Message(i, "Hello RabbitMQ - Request: " + (i + 1));
+			
+			channel.basicPublish("", QUEUE_NAME, null, SerializationUtils.serialize(message));
+			System.out.println(" [x] Sent : " + message);
+		}
 		
 		channel.close();
 		connection.close();
