@@ -1,6 +1,6 @@
 # RabbitMQ Messaging Queue Example
 
-A basic demonstration of using RabbitMQ as a Producer-Consumer messaging queue.
+A relatively basic demonstration of using RabbitMQ as a Producer-Consumer messaging queue using Java.
 
 ## Setup
 
